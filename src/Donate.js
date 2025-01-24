@@ -3,7 +3,6 @@ import { PaystackButton } from "react-paystack";
 
 const Donate = () => {
     const publicKey = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
-    console.log(publicKey);
 
     const [email, setEmail] = useState("");
     const [amount, setAmount] = useState("");
