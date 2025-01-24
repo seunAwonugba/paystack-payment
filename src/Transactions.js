@@ -64,15 +64,21 @@ const Transactions = () => {
                             <tr key={transaction.id}>
                                 <td className={style.td}>{transaction.id}</td>
                                 <td className={style.td}>
-                                    {transaction.customer?.name || "N/A"}
+                                    {transaction.customer?.first_name ||
+                                        transaction.metadata?.name ||
+                                        "N/A"}
                                 </td>
                                 <td className={style.td}>
                                     {transaction.customer?.email || "N/A"}
                                 </td>
                                 <td className={style.td}>
-                                    {(
-                                        transaction.amount / 100
-                                    ).toLocaleString()}
+                                    {(transaction.amount / 100).toLocaleString(
+                                        undefined,
+                                        {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2,
+                                        }
+                                    )}
                                 </td>
                                 <td className={style.td}>
                                     {new Date(
